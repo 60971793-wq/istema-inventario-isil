@@ -1,21 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Producto;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 
-class ProductoController extends Controller
+class Controller extends BaseController
 {
-    public function index()
-    {
-        return Producto::all();
-    }
-
-    public function store(Request $request)
-    {
-        $producto = Producto::create($request->all());
-        return response()->json($producto, 201);
-    }
+    use AuthorizesRequests, ValidatesRequests;
 }
